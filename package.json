@@ -1,0 +1,12 @@
+{
+  "name": "ircarena",
+  "author": "Eirik Brandtzæg <eirikb@eirikb.no>",
+  "version": "0.0.1",
+  "main": "./ircarena.js",
+  "devDependencies": {
+    "ircdjs": "",
+    "irc": "",
+    "underscore": "",
+    "winston": ""
+  }
+}

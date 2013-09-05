@@ -1,0 +1,12 @@
+{
+  "maxClients": 10,
+  "nicks": ["Obi-Wan", "Darth Vader", "Luke", "Princess Leia", "Stormtrooper", "Han Solo", "Bartender", "Uncle Owen", "Governor Tarkin", "Voice over comm", "General Tagge", "Admiral Motti", "Aunt Beru", "Officer Cass", "Imperial Officer", "Greedo", "Voice", "Gold Leader", "Gold Five", "Red Leader", "C-3PO", "General Dodonna", "General Willard", "Other stormtrooper", "Captain Antilles", "Chewbacca", "Commander #1", "Biggs", "Stormtrooper Officer", "Red Six"],
+  "servers": [{
+      "port": 6667,
+      "channels": ["#test1", "#test2"]
+    }, {
+      "port": 6668,
+      "channels": ["#test1", "#test2"]
+    }
+  ]
+}
