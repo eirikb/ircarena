@@ -37,7 +37,10 @@ exports.Client = function(nicks, serverConfig) {
         msg: function() {
           if (!channel) return;
           var m = r(quotes);
-          client.say(channel, m);
+          var isAction = m.match(/^\[(.*)\]$/);
+
+          if (isAction) client.action(channel, isAction[1]);
+          else client.say(channel, m);
         },
         /*
          * Currently not possible?
