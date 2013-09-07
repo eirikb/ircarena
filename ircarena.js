@@ -2,7 +2,7 @@
 
 var ircdjs = require('ircdjs');
 var _ = require('underscore');
-var cp = require('child_process');
+var Client = require('./client.js').Client;
 
 var config = require('./config.json');
 
@@ -23,11 +23,7 @@ function init(serverConfig) {
 
   _.times(config.maxClients, function(id) {
 
-    var n = cp.fork(__dirname + '/client.js');
-    n.send({
-      id: id,
-      nicks: config.nicks,
-      serverConfig: serverConfig
-    });
+
+    var c = new Client(config.nicks, serverConfig);
   });
 }

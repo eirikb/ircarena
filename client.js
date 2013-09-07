@@ -11,21 +11,13 @@ function r(n) {
 
 var interval;
 
-function close() {
-  clearInterval(interval);
-}
-process.on('close', close);
-process.on('disconnect', close);
-process.on('exit', close);
-process.on('error', close);
-
-process.on('message', function(data) {
-  var nick = r(data.nicks);
+exports.Client = function(nicks, serverConfig) {
+  var nick = r(nicks);
   nick = nick.replace(/[ -]/g, '_').slice(0, 9);
 
-  var channels = data.serverConfig.channels;
+  var channels = _.clone(serverConfig.channels);
 
-  var port = data.serverConfig.port;
+  var port = serverConfig.port;
   var client = new irc.Client('localhost', nick, {
     port: port,
     channels: channels
@@ -48,19 +40,20 @@ process.on('message', function(data) {
           client.say(channel, m);
         },
         /*
+         * Currently not possible?
         part: function() {
           if (!channel) return;
           channels = _.without(channels, channel);
           client.part(channel);
         },
         join: function() {
-          channel = r(_.difference(data.serverConfig.channels, channels));
+          channel = r(_.difference(serverConfig.channels, channels));
           if (!channel) return;
 
           channels.push(channel);
           client.join(channel);
         }
-       */
+      */
       };
       var as = r(_.keys(a));
       a[as]();
@@ -70,4 +63,4 @@ process.on('message', function(data) {
       action(client, nick);
     }, intervalTime);
   });
-});
+};
